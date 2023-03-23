@@ -10,10 +10,10 @@ public Musico (string No)
 
 }
 
-public void saluda()
-{
-    Console.WriteLine("hola buenas noches");
-}
+public virtual string Getsaluda() => "hola soy " + Nombre;
+
+public virtual void saludo() => Console.WriteLine(Getsaluda());
+
 
 public /* virtual*/ abstract void Tocar();
 
@@ -38,6 +38,9 @@ class Baterista:Musico
     {
         Console.WriteLine($"{Nombre} esta tocando su {Bateria}");
     }
+
+    public override string Getsaluda() => base.Getsaluda() + " y soy baterísta" ;
+    public override void saludo() => Console.WriteLine(Getsaluda());
 }
 
 class Bajista:Musico
@@ -54,6 +57,9 @@ class Bajista:Musico
         Console.WriteLine($"{Nombre} tocando su {Bajo}");
     }
 
+    public override string Getsaluda() => base.Getsaluda() + " y soy bajista" ;
+    public override void saludo() => Console.WriteLine(Getsaluda());
+
 }
 
 
@@ -66,7 +72,7 @@ internal class Program
         grupoPerron.Add(new Baterista("pedro","la normal"));
        /* grupoPerron.Add(new Musico("Bon jovi"));*/
 
-        foreach (var m in grupoPerron) m.saluda();
+        foreach (var m in grupoPerron) m.saludo();
         foreach (var m in grupoPerron) m.Tocar();
 
 
